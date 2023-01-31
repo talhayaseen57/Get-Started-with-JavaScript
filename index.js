@@ -24,7 +24,7 @@ let selectedColor = null;   // null is used to set clear for some value
 // var, let and const
 // var --> scope is within function it is declared
 // let --> scope is within block it is declared
-// const --> scope is within block but value cannot be changed once intialized
+// const --> scope is within block but value cannot be resassigned once intialized
 function sayHello() {
     // if i is declared with var then console.log(i) after for loop can access the variable i
     // if i is declared with let then console.log(i) after for loop cannot access the variable i
@@ -32,7 +32,19 @@ function sayHello() {
         console.log(i);
     }
 
-    console.log(i);
+    // console.log(i);
 }
-
 sayHello();
+
+// objects
+const laptop = {
+    company: "DELL",
+    trainData: function() {},
+    executeCode() {}
+};
+
+console.log(laptop.company);
+
+let targetMember = 'company';       // to avoid hard-coding
+laptop[targetMember] = "ASUS";
+console.log(laptop['company']);
