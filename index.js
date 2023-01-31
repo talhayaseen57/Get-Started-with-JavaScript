@@ -38,9 +38,9 @@ sayHello();
 
 // objects
 const laptop = {
-    company: "DELL",
-    trainData: function() {},
-    executeCode() {
+    company: "DELL",            // property of object
+    trainData: function() {},   // method --> way 1 to define method inside an object
+    executeCode() {             // method --> way 2 to define method inside an object
         console.log(this);
     }
 };
@@ -60,7 +60,39 @@ console.log(laptop['company']);
 laptop.executeCode();
 
 // we are not calling executeCode function, we are just getting a reference to the executeCode func
-const execute = laptop.executeCode;
-console.log(execute);
+const execute1 = laptop.executeCode;
+console.log(execute1);
 // if we call a function as a standlon object or outside the object, "this" will refer to global object which is windows here
-execute();
+execute1();
+
+
+/*
+    Binding --> creating a permanent refrence to an object
+*/
+
+// this way "this" keyword will refer to the laptop object, doesn't matter what and how we call the func
+const execute2 = laptop.executeCode.bind(laptop);
+console.log(execute2);
+execute2();
+
+// functions and arrow functions in ECMAScript5
+const square1 = function (number) {
+    return number*number;
+}
+
+const square2 = number => number*number;
+
+console.log(square1(5));
+console.log(square2(5))
+
+const jobs = [
+    {id: 1, isActive: true},
+    {id: 2, isActive: false},
+    {id: 3, isActive: true}
+]
+
+const activeJobs1 = jobs.filter(function (job) {return job.isActive});
+const activeJobs2 = jobs.filter(job => !job.isActive);
+
+console.log(activeJobs1);
+console.log(activeJobs2);
