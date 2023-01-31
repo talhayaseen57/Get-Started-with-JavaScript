@@ -40,7 +40,9 @@ sayHello();
 const laptop = {
     company: "DELL",
     trainData: function() {},
-    executeCode() {}
+    executeCode() {
+        console.log(this);
+    }
 };
 
 console.log(laptop.company);
@@ -48,3 +50,17 @@ console.log(laptop.company);
 let targetMember = 'company';       // to avoid hard-coding
 laptop[targetMember] = "ASUS";
 console.log(laptop['company']);
+
+/*
+    The "this" keyword
+    value of this is dedtermined how the function containing this is called
+*/
+
+// if we call a function as method of an object "this" will refer to that specific object
+laptop.executeCode();
+
+// we are not calling executeCode function, we are just getting a reference to the executeCode func
+const execute = laptop.executeCode;
+console.log(execute);
+// if we call a function as a standlon object or outside the object, "this" will refer to global object which is windows here
+execute();
